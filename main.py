@@ -6,14 +6,14 @@ import os
 import requests
 
 
-lowest_discount = 60
+lowest_discount = 55
 highest_discount = 100
 
 
 # URl to web scrap from.
-# In this example we web scrap discounts Electronic from Amazon
+# We web scrap discounted Electronic from Amazon
 # Interchangeable if needed
-page = requests.get("https://www.amazon.com/gp/goldbox?ref_=nav_cs_gb_40dff72b654a4d9e977a0d06d9b4038f&deals-widget=%257B%2522version%2522%253A1%252C%2522viewIndex%2522%253A0%252C%2522presetId%2522%253A%25226166F99AC29FCB0619968DE135E9B661%2522%252C%2522departments%2522%253A%255B%2522172282%2522%255D%252C%2522sorting%2522%253A%2522BY_CUSTOM_CRITERION%2522%257D")
+page = requests.get("https://www.amazon.com/gp/goldbox?ref_=nav_cs_gb_40dff72b654a4d9e977a0d06d9b4038f&deals-widget=%257B%2522version%2522%253A1%252C%2522viewIndex%2522%253A0%252C%2522presetId%2522%253A%25226166F99AC29FCB0619968DE135E9B661%2522%252C%2522discountRanges%2522%253A%255B%257B%2522from%2522%253A10%252C%2522to%2522%253A25%252C%2522selected%2522%253Afalse%257D%252C%257B%2522from%2522%253A25%252C%2522to%2522%253A50%252C%2522selected%2522%253Atrue%257D%252C%257B%2522from%2522%253A50%252C%2522to%2522%253A70%252C%2522selected%2522%253Afalse%257D%255D%252C%2522departments%2522%253A%255B%2522172282%2522%255D%252C%2522sorting%2522%253A%2522BY_CUSTOM_CRITERION%2522%257D")
 
 html_contents = page.text
 page_soup = soup(html_contents, "html.parser")
@@ -24,7 +24,7 @@ containers = page_soup.findAll("div", {"class": "all-slots"})
 
 all_products = []
 
-
+# Web Scraping Stuff
 for single_cont in containers:
     single_product_info = []
 
